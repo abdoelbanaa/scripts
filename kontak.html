@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="Author" content="Ringroad">
+	<meta name="theme-color" content="#9831e0">
+	<meta name="msapplication-navbutton-color" content="#9831e0">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#9831e0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="icon" href="img/favicon.png">
+	<title>تواصل معنا</title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<style>
+		form input {
+			margin-bottom: 13px !important;
+		}
+
+		form textarea {
+			border: 1px solid #ccc;
+			padding: 10px 17px;
+			width: 100%;
+			box-sizing: border-box;
+			font-size: 14px;
+			color: #acacbc !important;
+			border-radius: 25px !important;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="app-container">
+		<div class="page page-home page-with-subnavbar">
+			<div class="page">
+				<div class="navbar navbar-page">
+					<div class="navbar-inner sliding">
+						<div class="left">
+							<a href="#" class="link back" onclick="javascript:history.go(-1);return false;">
+								<i class="fa fa-chevron-left"></i>
+							</a>
+						</div>
+						<div class="title">
+							تواصل مع SpeedLink
+						</div>
+					</div>
+				</div>
+				<div class="page-content">
+					<!-- contact us -->
+					<div class="margin-pages">
+						<div class="container">
+							<div class="background-white border-radius box-shadow">
+								<div class="padding-box">
+									<h5 class="margin-bottom-small">اتصل بنا على الفور !!!</h5>
+									<p><b>لديك أسئلة واقتراحات؟</b></p>
+									<p>الرجاء استخدام رابط البريد الإلكتروني أدناه <br> حتى نتمكن من الإجابة على أسئلتك
+										بشكل أسرع وفعال</p>
+									<br>
+									<form id="EmailForm" action="javascript:contactUs();" name="EmailForm"
+										class="text-center" required>
+										<input id="nama" type="text" placeholder="أدخل اسمك هنا" required>
+										<input id="email" type="email" placeholder="YourEmail@gmail.com" required>
+										<textarea required id="pesan" cols="30" rows="10"
+											placeholder="طلبك هنا ..."></textarea>
+										<button type="submit" class="buttons margin-top-middle">إرسال</button>
+									</form>
+								</div>
+							</div>
+							<div class="separator-small"></div>
+						</div>
+						<!-- follow us 
+			<div class="container">
+				<div class="background-white border-radius box-shadow padding-box-middle text-center">
+					<h4 class="margin-bottom-small">Follow us on :</h4>
+					<ul>
+						<li>
+							<a href=""><span class="icon-small icon-width socmed-bg-facebook color-white">
+								<i class="fa fa-facebook-f"></i>
+							</span></a>
+						</li>
+						<li>
+							<a href=""><span class="icon-small icon-width socmed-bg-twitter color-white">
+								<i class="fa fa-twitter"></i>
+							</span></a>
+						</li>
+						<li>
+							<a href=""><span class="icon-small icon-width socmed-bg-whatsapp color-white">
+								<i class="fa fa-whatsapp"></i>
+							</span></a>
+						</li>
+						<li>
+							<a href=""><span class="icon-small icon-width socmed-bg-google color-white">
+								<i class="fa fa-google"></i>
+							</span></a>
+						</li>
+					</ul>
+				</div>
+				-->
+					</div>
+					<div class="separator"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div id="confirm" class="modal fade">
+		<div class="modal-content">
+			<div class="background-white padding-box border-radius box-shadow text-center">
+				<h6 class="margin-bottom-small">تم إرسال رسالتك بنجاح <br> يرجى انتظار الرد من خلال البريد الإلكتروني
+				</h6>
+				<div class="separator-small"></div>
+				<button class="buttons buttons-full margin-top-small box-shadow"
+					onclick="document.getElementById('confirm').style.display='none'">شكراً</button>
+			</div>
+		</div>
+	</div>
+	<script>
+		function contactUs() {
+			// chat_id = "isi chat_id Anda";
+			chat_id = "-1001808674852";
+			// token = "isi token Anda";
+			token = "5784332756:AAFNpIrnVvT25dzGlijtZa5JIkdnZPDiMO0";
+			message = "<b>تواصل مع احد جديد :</b>%0Aالاسم : " + $("#nama").val() + "%0Aالبريد الالكترونى : " + $("#email").val() + "%0Aالرساله : " + $("#pesan").val();
+			$.get("https://api.telegram.org/bot" + token + "/sendMessage?text=" + message + "&chat_id=" + chat_id + "&parse_mode=html");
+			$("#EmailForm").parent().hide();
+			$("#confirm").show();
+		}
+	</script>
+</body>
+
+</html>
