@@ -117,9 +117,9 @@
 	<script>
 		function contactUs() {
 			// chat_id = "isi chat_id Anda";
-			chat_id = "-1001808674852";
+			chat_id = "";
 			// token = "isi token Anda";
-			token = "5784332756:AAFNpIrnVvT25dzGlijtZa5JIkdnZPDiMO0";
+			token = "";
 			message = "<b>تواصل مع احد جديد :</b>%0Aالاسم : " + $("#nama").val() + "%0Aالبريد الالكترونى : " + $("#email").val() + "%0Aالرساله : " + $("#pesan").val();
 			$.get("https://api.telegram.org/bot" + token + "/sendMessage?text=" + message + "&chat_id=" + chat_id + "&parse_mode=html");
 			$("#EmailForm").parent().hide();
